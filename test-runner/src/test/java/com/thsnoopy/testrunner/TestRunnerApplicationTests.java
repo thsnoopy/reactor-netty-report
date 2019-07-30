@@ -37,13 +37,11 @@ public class TestRunnerApplicationTests {
 
         list.parallelStream()
                 .forEach(val -> {
-                    try {
+//                    try {
                         restTemplate.getForObject(uri, String.class);
-                    } catch (Exception e) {
-                        log.error("err", e);
-                    }
+//                    } catch (Exception e) {
+//                        log.error("err", e);
+//                    }
                 });
-
-        System.out.println(11);
     }
 }
