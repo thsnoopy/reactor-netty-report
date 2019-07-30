@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+    <property name="LOG_FILE_DIRECTORY" value="./log"/>
+    <property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ '(UTC)',UTC} %5p ${PID:- } --- [%t] %-40.40logger{39} : %m%n%wex"/>
+
+    <appender name="dailyRollingFileAppender"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <!-- daily rollover -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE_DIRECTORY}/server-actor-%d{yyyy-MM-dd, UTC}.log</fileNamePattern>
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.thsnoopy" level="DEBUG">
+    </logger>
+    <root level="WARN">
+        <appender-ref ref="dailyRollingFileAppender"/>
+    </root>
+</configuration>

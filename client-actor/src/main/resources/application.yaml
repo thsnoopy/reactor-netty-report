@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+api:
+  sample:
+    endpoint: http://localhost:9090
+    connectTimeoutInMilliSecond: 20000
+    readWriteTimeoutInSecond: 100
+
+logging:
+  level:
+    reactor:
+      netty: debug
